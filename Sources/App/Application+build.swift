@@ -19,7 +19,7 @@ typealias AppRequestContext = BasicRequestContext
 public func buildApplication(_ arguments: some AppArguments) async throws -> some ApplicationProtocol {
     let environment = Environment()
     let logger = {
-        var logger = Logger(label: "{{HB_PACKAGE_NAME}}")
+        var logger = Logger(label: "HbDemoProject")
         logger.logLevel = 
             arguments.logLevel ??
             environment.get("LOG_LEVEL").flatMap { Logger.Level(rawValue: $0) } ??
@@ -31,7 +31,7 @@ public func buildApplication(_ arguments: some AppArguments) async throws -> som
         router: router,
         configuration: .init(
             address: .hostname(arguments.hostname, port: arguments.port),
-            serverName: "{{HB_PACKAGE_NAME}}"
+            serverName: "HbDemoProject"
         ),
         logger: logger
     )
